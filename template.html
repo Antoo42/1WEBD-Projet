@@ -3,22 +3,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/logo.png" sizes="any">
-    <title>CinéVision - Recherche</title>
+    <title>CinéVision - Acceuil</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/search.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
 <header>
     <nav class="navigationBar">
         <a href="index.html"><img class="logo" src="assets/logo.png" alt="Logo de PixelKeys, où l'on peut voir le nom de l'entreprise, avec le 'L' s'impriquer dans une clé"></a>
         <div class="navigationLinks">
-            <a href="index.html" class="navigationButton">Acceuil</a>
-            <a href="search.html" class="navigationButton active">Recherche</a>
+            <a href="index.html" class="navigationButton active">Acceuil</a>
+            <a href="search.html" class="navigationButton">Recherche</a>
         </div>
         <span id="themeButton" class="navigationButton">🌙</span>
 
@@ -27,12 +24,7 @@
 
 <main>
     <div class="container">
-        <section class="searchSection">
-            <label>
-                <input id="searchInput" class="searchBar" type="text" placeholder="Rechercher un film (Ex: Cars, Minecraft,...)">
-            </label>
-            <ul class="filmsList" id="filmsList"></ul>
-        </section>
+
     </div>
 </main>
 
@@ -63,6 +55,5 @@
 </footer>
 </body>
 <script src="js/darkMode.js"></script>
-<script type="module" src="js/searchPage.js"></script>
 <script src="https://kit.fontawesome.com/f2606348aa.js" crossorigin="anonymous"></script>
 </html>
