@@ -55,6 +55,17 @@ export default class FilmMiniItem {
         </div>
     `;
 
+        const img = article.querySelector('.filmPoster');
+        img.addEventListener('error', function() {
+            this.src = '../assets/logo.png';
+            this.onerror = null;
+        });
+
+
+        $(article).on('click', () => {
+            window.open(`movie.html?id=${this.id}`, '_blank');
+        })
+
         return article;
     }
 }

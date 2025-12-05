@@ -1,5 +1,5 @@
 export default class OmdbApi {
-    constructor(configPath = "../utils/config.json") {
+    constructor(configPath = "../settings/config.json") {
         this.configPath = configPath;
         this.token = null;
         this.api = null;
@@ -56,7 +56,7 @@ export default class OmdbApi {
     }
 
 
-    async searchFilm(name) {
+    async searchFilm(name, page = 1) {
         if (!this.api) {
             return;
         }
@@ -64,6 +64,7 @@ export default class OmdbApi {
             const response = await this.api.get('', {
                 params: {
                     s: name,
+                    page: page,
                     type: "movie"
                 }
             })

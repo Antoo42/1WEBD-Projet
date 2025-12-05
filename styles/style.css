@@ -59,12 +59,57 @@ body {
 
 .arrow {
     font-size: 2rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--arrow);
 }
 
 .arrow:hover {
     color: var(--accent-primary);
 }
+
+.subtitle {
+    font-size: 3rem;
+    color: var(--subtitle);
+}
+
+.button {
+    background-color: var(--accent-primary);
+    color: var(--text-main);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    cursor: pointer;
+
+    box-shadow:
+            0 4px 6px rgba(0, 0, 0, 0.1),
+            0 1px 3px rgba(0, 0, 0, 0.08);
+
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.button:hover {
+    color: var(--surface);
+    background-color: var(--btn);
+
+    box-shadow:
+            0 10px 20px rgba(0, 0, 0, 0.15),
+            0 3px 6px rgba(0, 0, 0, 0.1);
+
+    transform: translateY(-4px);
+}
+
+.button:active {
+    transform: translateY(-2px);
+    box-shadow:
+            0 5px 10px rgba(0, 0, 0, 0.12),
+            0 2px 4px rgba(0, 0, 0, 0.08);
+    transition: all 0.1s ease;
+}
+
+
 
 
 /*items de films*/
@@ -115,3 +160,34 @@ body {
     border-color: var(--accent-primary);
 }
 
+
+.jump {
+    margin: 10rem 0;
+    border: none;
+    height: 0;
+}
+.arrow-down {
+    display: block;
+    position: absolute;
+    top: 25rem;
+    left: 49%;
+    font-size: 2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.spinner {
+    margin: 2rem;
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid var(--surface);
+    border-top-color: var(--accent-primary);
+    animation: spin 1s infinite linear;
+    border-radius: 50%;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

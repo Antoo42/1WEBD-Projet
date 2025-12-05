@@ -12,6 +12,9 @@
     --btn: #ff2b3b;
     --nav-selected: rgba(229, 9, 20, 0.3);
     --light-red: #ff6b6b;
+
+    --arrow: rgba(255, 255, 255, 0.3);
+    --border: #262626;
 }
 
 [data-theme="light"] {
@@ -28,4 +31,8 @@
     --btn: #d81824;
     --nav-selected: rgba(229, 9, 20, 0.12);
     --light-red: #e45a5a;
+
+    --arrow: rgba(3, 3, 3, 0.3);
+
+    --border: #e0e0e0;
 }

@@ -5,37 +5,25 @@ export default class FilmItem {
         this._rated = data.Rated;
         this._released = data.Released;
         this._runtime = data.Runtime;
-
-        // Équipe de création
         this._genre = data.Genre;
         this._director = data.Director;
         this._writers = data.Writer;
         this._actors = data.Actors;
-
-        // Détails du film
         this._plot = data.Plot;
         this._language = data.Language;
         this._country = data.Country;
         this._awards = data.Awards;
-
-        // Médias
         this._poster = data.Poster;
-
-        // Évaluations
         this._ratings = data.Ratings || [];
         this._metascore = data.Metascore;
         this._imdbRating = data.imdbRating;
         this._imdbVotes = data.imdbVotes;
         this._imdbID = data.imdbID;
-
-        // Informations commerciales
         this._type = data.Type;
         this._dvd = data.DVD;
         this._boxOffice = data.BoxOffice;
         this._production = data.Production;
         this._website = data.Website;
-
-        // Données brutes (optionnel, pour référence)
         this._rawData = data;
         this._data = data;
 
@@ -246,13 +234,13 @@ export default class FilmItem {
         const article = document.createElement('article');
         article.classList.add('film-detail');
 
-        console.log(this.title);
 
         if (this._title === "undefined") {
             return this.createUnknownFilmElement();
         }
 
         const imgSrc = this.poster !== "N/A" ? this.poster : "../assets/logo.png";
+
 
         article.innerHTML = `
     <div class="product">
@@ -275,9 +263,6 @@ export default class FilmItem {
                 </div>
                 
                 <div class="ratings">
-                    <div class="note">
-                        ${this.rated !== "N/A" ? this.rated : 'Non classé'}
-                    </div>
                     ${this.imdbRating !== "N/A" ? `
                         <div class="rating">⭐ ${this.imdbRating}/10</div>
                     ` : ''}
@@ -285,7 +270,6 @@ export default class FilmItem {
             </div>
         </section>
 
-        <!-- Section About: Description et caractéristiques -->
         <section class="about">
             ${this.plot !== "N/A" ? `
             <div class="description">
@@ -325,6 +309,12 @@ export default class FilmItem {
         </section>
     </div>
     `;
+
+        const img = article.querySelector('.cover');
+        img.addEventListener('error', function() {
+            this.src = '../assets/logo.png';
+            this.onerror = null;
+        });
 
         return article;
     }

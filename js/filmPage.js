@@ -1,4 +1,4 @@
-import OmdbApi from "./apiService.js";
+import OmdbApi from "./services/apiService.js";
 import FilmItem from "./filmItem.js";
 
 const api = new OmdbApi();

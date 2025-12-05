@@ -7,5 +7,6 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="axios" level="application" />
     <orderEntry type="library" name="f2606348aa" level="application" />
+    <orderEntry type="library" name="swiper" level="application" />
   </component>
 </module>
