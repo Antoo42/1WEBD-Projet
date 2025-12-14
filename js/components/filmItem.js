@@ -234,8 +234,9 @@ export default class FilmItem {
         const article = document.createElement('article');
         article.classList.add('film-detail');
 
+        console.log(this.title)
 
-        if (this._title === "undefined") {
+        if (this.title === "undefined") {
             return this.createUnknownFilmElement();
         }
 
@@ -320,6 +321,7 @@ export default class FilmItem {
     }
 
     createUnknownFilmElement() {
+        console.log("Film non trouvé !")
         const article = document.createElement('article');
         article.classList.add('film-not-found');
 

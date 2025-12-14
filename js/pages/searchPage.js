@@ -1,5 +1,5 @@
-import OmdbApi from "./services/apiService.js";
-import FilmMiniItem from "./filmMiniItem.js";
+import OmdbApi from "../services/apiService.js";
+import FilmMiniItem from "../components/filmMiniItem.js";
 const api = new OmdbApi();
 await api.init();
 
@@ -18,6 +18,7 @@ function setLoading(isLoading) {
 $('#searchInput').on('keyup', function(e) {
     clearTimeout(timeout);
     const value = $(this).val();
+    setLoading(true);
 
     timeout = setTimeout(function() {
         list.innerHTML = '';
@@ -32,7 +33,6 @@ $('#moreFilmsButton').on('click', function(e) {
 })
 
 function searchFilms() {
-    setLoading(true);
     api.searchFilm($('#searchInput').val(), page).then(data => {
         films = data;
         buildFilmsElements(films);

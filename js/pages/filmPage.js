@@ -1,5 +1,5 @@
-import OmdbApi from "./services/apiService.js";
-import FilmItem from "./filmItem.js";
+import OmdbApi from "../services/apiService.js";
+import FilmItem from "../components/filmItem.js";
 
 const api = new OmdbApi();
 
@@ -13,8 +13,19 @@ let data;
 async function getFilmData(id) {
     api.getFilmById(id).then(r => {
         data = r;
-        renderFilm()
+        if (data.Response === 'False') {
+            renderNoFilm()
+        } else {
+            renderFilm()
+        }
     });
+}
+
+function renderNoFilm() {
+    let filmItem = new FilmItem(data);
+    let el = filmItem.createUnknownFilmElement();
+    $("#filmSection").append(el);
+
 }
 
 function renderFilm() {

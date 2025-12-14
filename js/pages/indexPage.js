@@ -1,5 +1,5 @@
-import OmdbApi from "./services/apiService.js";
-import FilmMiniItem from "./filmMiniItem.js";
+import OmdbApi from "../services/apiService.js";
+import FilmMiniItem from "../components/filmMiniItem.js";
 
 const api = new OmdbApi();
 await api.init();
