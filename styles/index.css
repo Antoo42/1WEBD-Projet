@@ -140,3 +140,13 @@
 .film-info button {
     width: fit-content;
 }
+
+
+.loadMore {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}

@@ -37,15 +37,17 @@ export default class OmdbApi {
         }
     }
 
-    async getFilmsByYear(year, name) {
+    async getFilmsByYear(year, page = 1) {
         if (!this.api) {
             return;
         }
         try {
             const response = await this.api.get('', {
                 params: {
+                    s: "movie",
                     y: year,
-                    t: name
+                    page: page,
+                    type:"movie"
                 }
             });
             return response.data;

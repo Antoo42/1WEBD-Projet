@@ -289,7 +289,7 @@ export default class FilmItem {
                     <p>Scénario: <strong>${this.writers}</strong></p>
                 ` : ''}
                 ${this.actors !== "N/A" ? `
-                    <p>Distribution: <strong>${this.actors}</strong></p>
+                    <p>Acteurs: <strong>${this.actors}</strong></p>
                 ` : ''}
                 ${this.language !== "N/A" ? `
                     <p>Langues: <strong>${this.language}</strong></p>
@@ -305,6 +305,9 @@ export default class FilmItem {
                 ` : ''}
                 ${this.boxOffice !== "N/A" ? `
                     <p>BoxOffice: <strong>${this.boxOffice}</strong></p>
+                ` : ''}
+                ${this.dvd !== "N/A" ? `
+                    <p>Sortie en DVD: <strong>${this.dvd}</strong></p>
                 ` : ''}
             </div>
         </section>

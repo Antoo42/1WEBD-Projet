@@ -9,13 +9,24 @@ let page = 1;
 // $('#searchInput').val("Marvel");
 searchFilms()
 
+const elErrorMessage = document.getElementById('errorMessage');
+
 let timeout;
 
 function setLoading(isLoading) {
     $('#searchSpinner').toggleClass('hidden', !isLoading);
 }
 
+function hideMoreButton(boolean) {
+    $('#moreButton').toggleClass('hidden', boolean)
+}
+
+function hideNoResults (boolean) {
+    $('#noResults').toggleClass('hidden', boolean)
+}
+
 $('#searchInput').on('keyup', function(e) {
+    hideMoreButton(true)
     clearTimeout(timeout);
     const value = $(this).val();
     setLoading(true);
@@ -27,15 +38,21 @@ $('#searchInput').on('keyup', function(e) {
     }, 1000)
 })
 
-$('#moreFilmsButton').on('click', function(e) {
+$('#moreButton').on('click', function(e) {
     page++;
     searchFilms();
+    setLoading(true)
 })
 
 function searchFilms() {
     api.searchFilm($('#searchInput').val(), page).then(data => {
-        films = data;
-        buildFilmsElements(films);
+        if (data.Response === "False") {
+            elErrorMessage.textContent = `Erreur: ${data.Error}`
+            hideNoResults(false);
+        } else {
+            buildFilmsElements(data);
+            hideNoResults(true);
+        }
     }).finally(() =>  {
         setLoading(false);
     });
@@ -51,4 +68,5 @@ function buildFilmsElements(films) {
 
         list.appendChild(item);
     });
+    hideMoreButton(false)
 }

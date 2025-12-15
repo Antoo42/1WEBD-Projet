@@ -38,3 +38,6 @@
     box-shadow: 0 3px 10px var(--accent-primary);
 }
 
+.error {
+    color: var(--accent-primary)
+}

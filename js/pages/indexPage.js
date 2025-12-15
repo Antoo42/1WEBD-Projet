@@ -6,8 +6,10 @@ await api.init();
 
 const config = await $.getJSON("../settings/config.json");
 const filmsId = Object.values(config.trendingsFilms);
+const swiperWrapper = $('.swiper-wrapper');
 
 let swiper = null;
+let page = 1
 
 async function renderTrendingProducts() {
     const promises = filmsId.map(id =>
@@ -19,13 +21,36 @@ async function renderTrendingProducts() {
 
     const filmElements = await Promise.all(promises);
 
-    const swiperWrapper = $('.swiper-wrapper');
     filmElements.forEach(element => {
-        const slide = $('<div class="swiper-slide"></div>').append(element);
-        swiperWrapper.append(slide);
+        addFilm(element);
     });
 
-    initSwiper();
+    renderSwiper();
+
+    $('#loadMoreTrendingFilmsButton').on("click", () => {
+        loadMoreFilms();
+        page++;
+    })
+}
+
+function loadMoreFilms() {
+    setLoading(true)
+    api.getFilmsByYear(2025, page).then(data => {
+        data.Search.forEach(film => {
+            filmsId.push(film.imdbID)
+            const filmItem = new FilmMiniItem(film.imdbID, film.Title, film.Poster, film.Year);
+            const item = filmItem.createFilmElement()
+            addFilm(item)
+        })
+    }).finally(() => setLoading(false))
+}
+
+function addFilm(element) {
+    const slide = $('<div class="swiper-slide"></div>').append(element);
+    swiperWrapper.append(slide);
+    if (swiper !== null) {
+        swiper.update();
+    }
 }
 
 function renderCurrentFilm(id) {
@@ -64,16 +89,22 @@ function renderCurrentFilm(id) {
     });
 }
 
-function initSwiper() {
+
+
+function renderSwiper() {
     swiper = new Swiper('.swiper', {
-        loop: true,
+        loop: false,
         centeredSlides: true,
-        centeredSlidesBounds: true,
+        centeredSlidesBounds: false,
+
+        observer: true,
+        observeParents: true,
 
         autoplay: {
-            delay: 2500,
+            delay: 2000,
             disableOnInteraction: true,
         },
+
 
         slidesPerView: 5,
         spaceBetween: 40,
@@ -83,11 +114,21 @@ function initSwiper() {
             prevEl: '.swiper-button-prev',
         },
 
+        keyboard: {
+            enabled: true,
+            onlyInViewport: false,
+        },
+
         on: {
             slideChange: function () {
                 const currentFilmId = filmsId[this.realIndex];
                 renderCurrentFilm(currentFilmId);
-            }
+            },
+            init: function () {
+                console.log('swiper initialized');
+                const currentFilmId = filmsId[this.realIndex];
+                renderCurrentFilm(currentFilmId)
+            },
         }
     });
 }
@@ -142,3 +183,8 @@ function changeText() {
     });
 }
 setInterval(changeText, 5000);
+
+
+function setLoading(isLoading) {
+    $('#searchSpinner').toggleClass('hidden', !isLoading);
+}
