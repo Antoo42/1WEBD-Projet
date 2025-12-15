@@ -10,7 +10,7 @@
 
 Projet réalisé dans le cadre de la première année à SUPINFO - HTML/CSS/JS uniquement.
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=for-the-badge&logo=github)](https://github.com/Antoo42/cinevision)
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=for-the-badge&logo=github)](https://github.com/Antoo42/1WEBD-Projet)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)
 ![School](https://img.shields.io/badge/SUPINFO-PGE1_Project-blue?style=for-the-badge)
 
