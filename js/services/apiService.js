@@ -10,7 +10,7 @@ export default class OmdbApi {
             const config = await $.getJSON(this.configPath);
             this.token = config.token;
             this.api = axios.create({
-                baseURL: `https://www.omdbapi.com/`,
+                baseURL: config.apiUrl,
                 params: {
                     apikey: this.token
                 }
